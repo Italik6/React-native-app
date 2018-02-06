@@ -1,23 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
-import Home from '../mobile-app/components/Home'; 
+import { View } from 'react-native';
+import HomeMain from '../mobile-app/components/Home'; 
+import { Provider } from 'react-redux';
+import store from "../mobile-app/stores/index";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Home />
+      <Provider store={store} >
+      <View>
+        <HomeMain />
       </View>
+      </Provider>
     );
   } 
 }
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },  
-});

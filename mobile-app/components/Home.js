@@ -1,41 +1,40 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
+import { connect } from "react-redux";
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalVisible: false
-    };
-  }
-  
-  addExpense = () => {
-    this.setState({modalVisible:true});
-  }
+// Redux part
+const mapDispatchToProps = dispatch => {
+  return {
+      closeExtenseDialog: () => dispatch({type: 'CLOSE_EXTENSE_DIALOG'}),
+      openExtenseDialog: () => dispatch({type: 'OPEN_EXTENSE_DIALOG'})
+  };
+};
 
-  closeModal() {
-    this.setState({modalVisible:false});
-  }
-
+const mapStateToProps = state => {
+  return {
+      open: state.closeExtenseDialog.open
+  };
+};
+class Home extends React.Component {
   render() {
     return (
       <View>
         <Button
-          onPress={this.addExpense}
+          onPress={this.props.openExtenseDialog}
           large
           icon={{name: 'cart-plus', type: 'font-awesome'}}
           title='ADD EXPENSE'
           backgroundColor="#FF5722" />
           <Modal
-            visible={this.state.modalVisible}
+            visible={this.props.open}
             animationType={'slide'}
-            onRequestClose={() => this.closeModal()} >
+            onRequestClose={this.props.closeExtenseDialog} >
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
                 <Text>This is content inside of modal component</Text>
                 <Button
-                    onPress={() => this.closeModal()}
+                    onPress={this.props.closeExtenseDialog}
                     title="Close modal" >
                 </Button>
               </View>
@@ -45,15 +44,8 @@ export default class Home extends React.Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: { 
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const HomeMain = connect(mapStateToProps, mapDispatchToProps)(Home);
+export default HomeMain;
 
 const styles = StyleSheet.create({
   container: {
