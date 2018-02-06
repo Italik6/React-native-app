@@ -16,6 +16,7 @@ const mapStateToProps = state => {
       open: state.closeExtenseDialog.open
   };
 };
+// End of Redux part
 class Home extends React.Component {
   render() {
     return (
@@ -32,7 +33,7 @@ class Home extends React.Component {
             onRequestClose={this.props.closeExtenseDialog} >
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
-                <Text>This is content inside of modal component</Text>
+                <Text>Here gonna be form with inputs.</Text>
                 <Button
                     onPress={this.props.closeExtenseDialog}
                     title="Close modal" >

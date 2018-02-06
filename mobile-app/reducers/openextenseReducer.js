@@ -1,4 +1,3 @@
-
 const initialState = {
     open: false
    };
