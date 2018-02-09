@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from "react-redux";
+import AddForm from "../components/Form";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -33,7 +34,7 @@ class Home extends React.Component {
             onRequestClose={this.props.closeExtenseDialog} >
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
-                <Text>Here gonna be form with inputs.</Text>
+                <AddForm />
                 <Button
                     onPress={this.props.closeExtenseDialog}
                     title="Close modal" >
@@ -50,15 +51,15 @@ export default HomeMain;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    // flex: 1,
+    // justifyContent: 'center',
   },
   modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'grey',
+    // flex: 1,
+    // justifyContent: 'center',
+    // backgroundColor: 'grey',
   },
   innerContainer: {
-    alignItems: 'center',
+    // alignItems: 'center',
   },
 });
