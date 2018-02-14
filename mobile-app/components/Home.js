@@ -1,20 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
-  return {
-      closeExtenseDialog: () => dispatch({type: 'CLOSE_EXTENSE_DIALOG'}),
-      openExtenseDialog: () => dispatch({type: 'OPEN_EXTENSE_DIALOG'})
+  return { 
+      openExpenseDialog: () => dispatch({type: 'OPEN_EXPENSE_DIALOG'})
   };
 };
 
 const mapStateToProps = state => {
   return {
-      open: state.closeExtenseDialog.open
+      open: state.closeExpenseDialog.open
   };
 };
 // End of Redux part
@@ -23,7 +22,7 @@ class Home extends React.Component {
     return (
       <View>
         <Button
-          onPress={this.props.openExtenseDialog}
+          onPress={this.props.openExpenseDialog}
           large
           icon={{name: 'cart-plus', type: 'font-awesome'}}
           title='ADD EXPENSE'
@@ -31,14 +30,10 @@ class Home extends React.Component {
           <Modal
             visible={this.props.open}
             animationType={'slide'}
-            onRequestClose={this.props.closeExtenseDialog} >
+            onRequestClose={this.props.closeExpenseDialog} >
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
                 <AddForm />
-                <Button
-                    onPress={this.props.closeExtenseDialog}
-                    title="Close modal" >
-                </Button>
               </View>
             </View>
           </Modal>
