@@ -14,12 +14,20 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
       open: state.closeExpenseDialog.open,
-      expenses: state.closeExpenseDialog.expenses
+      expenses: state.closeExpenseDialog.expenses,
+      prices: state.closeExpenseDialog.prices
   };
 };
 // End of Redux part
 class Home extends React.Component {
   render() {
+    // Addition of prices
+    let convertStrings = this.props.prices.map(Number);
+    let addPrices = convertStrings.reduce(add, 0);
+      function add(a, b){
+        return a + b;
+      }
+
     return (
       <View>
         <Button
@@ -33,6 +41,13 @@ class Home extends React.Component {
             keyExtractor={(item, index) => index}
             renderItem={({item}) => <Text>{item}</Text>}
           />
+          <FlatList
+            data={this.props.prices}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => <Text>{item}</Text>}
+          />
+          <Text>Summary: {addPrices}</Text>
+          <Text>Per person: {addPrices/2}</Text>
           <Modal
             visible={this.props.open}
             animationType={'slide'}
