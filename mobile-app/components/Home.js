@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Modal } from 'react-native';
+import { StyleSheet, View, Modal, Text, FlatList, List } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-      open: state.closeExpenseDialog.open
+      open: state.closeExpenseDialog.open,
+      expenses: state.closeExpenseDialog.expenses
   };
 };
 // End of Redux part
@@ -27,6 +28,11 @@ class Home extends React.Component {
           icon={{name: 'cart-plus', type: 'font-awesome'}}
           title='ADD EXPENSE'
           backgroundColor="#FF5722" />
+          <FlatList
+            data={this.props.expenses}
+            keyExtractor={(item, index) => index}
+            renderItem={({item}) => <Text>{item}</Text>}
+          />
           <Modal
             visible={this.props.open}
             animationType={'slide'}

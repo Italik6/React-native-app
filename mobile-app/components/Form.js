@@ -7,13 +7,13 @@ import { FormLabel, FormInput, Button } from 'react-native-elements'
 const mapDispatchToProps = dispatch => {
   return {
       changeExpenseInput: (text) => dispatch({type: 'CHANGE_EXPENSE_INPUT', text}),
-      closeExpenseDialog: () => dispatch({type: 'CLOSE_EXPENSE_DIALOG'})
+      closeExpenseDialog: (expenses) => dispatch({type: 'CLOSE_EXPENSE_DIALOG', expenses})
   };
 };
 
 const mapStateToProps = state => {
   return {
-      text: state.changeExpenseInput.text
+      text: state.changeExpenseInput.text,
   };
 };
 // End of Redux part
@@ -26,7 +26,7 @@ class Form extends React.Component {
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             onChangeText={this.props.changeExpenseInput}
             value={this.props.text}
-        />
+         />
         <Button
             onPress={this.props.closeExpenseDialog}
             title="Close modal" >
