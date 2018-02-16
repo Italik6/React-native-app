@@ -18,6 +18,7 @@ const mapStateToProps = state => {
       prices: state.closeExpenseDialog.prices
   };
 };
+
 // End of Redux part
 class Home extends React.Component {
   render() {

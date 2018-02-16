@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text, Switch } from 'react-native';
 import { connect } from "react-redux";
-import { FormLabel, FormInput, Button } from 'react-native-elements'
+import { FormLabel, FormInput, Button } from 'react-native-elements';
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -20,11 +20,27 @@ const mapStateToProps = state => {
   };
 };
 // End of Redux part
+
 class Form extends React.Component {
+  changeValue = (value) => {
+    this.setState({
+      value:value
+    })
+  }
+
   render() {
+    console.log(this.state)
     return (
       <View>
-         <FormLabel>Expense</FormLabel>
+         <FormLabel>Expense form</FormLabel>
+          <Text>Who did pay?</Text>
+          <Text>selected radio {this.state}</Text>
+
+          <Switch 
+            onValueChange={ (value) = ? this.setState({ toggled: value })} 
+            value={ this.state.toggled } 
+          />
+
          <TextInput
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             onChangeText={this.props.changeExpenseInput}
@@ -39,6 +55,7 @@ class Form extends React.Component {
             maxLength={5}
             keyboardType='numeric'
          />  
+  
         <Button
             onPress={this.props.closeExpenseDialog}
             title="Save the expense" >
