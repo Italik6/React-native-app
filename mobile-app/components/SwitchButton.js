@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Switch, Alert} from 'react-native';
+import { Text, View, Switch} from 'react-native';
 import { connect } from "react-redux";
 
 // Redux part

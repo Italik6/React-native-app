@@ -10,7 +10,6 @@ const mapDispatchToProps = dispatch => {
       changeExpenseInput: (text) => dispatch({type: 'CHANGE_EXPENSE_INPUT', text}),
       changePriceInput: (price) => dispatch({type: 'CHANGE_PRICE_INPUT', price}),
       closeExpenseDialog: () => dispatch({type: 'CLOSE_EXPENSE_DIALOG'}),
-
   };
 };
 
@@ -55,8 +54,9 @@ class Form extends React.Component {
             title="Save the expense" >
         </Button>
       </View>
-    );
+    ); 
   }
 }
+
 const AddForm = connect(mapStateToProps, mapDispatchToProps)(Form);
 export default AddForm;
