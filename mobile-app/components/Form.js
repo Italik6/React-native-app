@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, Text, Switch } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 
@@ -33,14 +33,7 @@ class Form extends React.Component {
     return (
       <View>
          <FormLabel>Expense form</FormLabel>
-          <Text>Who did pay?</Text>
-          <Text>selected radio {this.state}</Text>
-
-          <Switch 
-            onValueChange={ (value) = ? this.setState({ toggled: value })} 
-            value={ this.state.toggled } 
-          />
-
+         <Text>Who did pay?</Text>
          <TextInput
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             onChangeText={this.props.changeExpenseInput}
