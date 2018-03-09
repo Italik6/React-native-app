@@ -5,7 +5,7 @@ const initialState = {
     open: false,
    };
    
-   const changeinputReducer = (state = initialState, action) => {
+   const changeInputReducer = (state = initialState, action) => {
      switch (action.type) { 
        case 'CHANGE_EXPENSE_INPUT':
          return {...state, text: action.text };
@@ -24,4 +24,4 @@ const initialState = {
      }
    };
    
-   export default changeinputReducer;
+   export default changeInputReducer;

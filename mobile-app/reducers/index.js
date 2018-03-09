@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import changeinputReducer from "./changeinputReducer";
+import changeInputReducer from "./changeInputReducer";
 import changeSwitchButton from "./changeSwitchButton";
 
-export default combineReducers({ changeExpenseInput: changeinputReducer, closeExpenseDialog: changeinputReducer, changePriceInput: changeinputReducer, switchButton: changeSwitchButton });
+export default combineReducers({ changeExpenseInput: changeInputReducer, closeExpenseDialog: changeInputReducer, changePriceInput: changeInputReducer, switchButton: changeSwitchButton });

@@ -1,20 +1,17 @@
 const initialState = {
-    SwitchOnValueHolder: false,
+    switchValue: false,
+    payer: "Michal"
    };
    
    const changeSwitchButton = (state = initialState, action) => {
      switch (action.type) { 
        case 'CHANGE_SWITCH_BUTTON':
-        if(state.SwitchOnValueHolder == true)
+        if (state.switchValue == true)
         {
-            //Perform any task here which you want to execute on Switch ON event.
-            console.log("jest ok");
-            return { SwitchOnValueHolder: false };
+          return { switchValue: false, payer: "Michal" };
         }
-        else{
-            //Perform any task here which you want to execute on Switch OFF event.
-            console.log("nie jest ok");
-            return { SwitchOnValueHolder: true };
+        else {
+          return { switchValue: true, payer: "Wiktor" };
         }
        default:
          return state;

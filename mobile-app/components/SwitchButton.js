@@ -5,13 +5,14 @@ import { connect } from "react-redux";
 // Redux part
 const mapDispatchToProps = dispatch => {
     return {
-        switchButton: (SwitchOnValueHolder) => dispatch({type: 'CHANGE_SWITCH_BUTTON', SwitchOnValueHolder}),
+        switchButton: (switchValue, payer) => dispatch({type: 'CHANGE_SWITCH_BUTTON', switchValue, payer}),
     };
   };
   
   const mapStateToProps = state => {
     return {
-        SwitchOnValueHolder: state.switchButton.SwitchOnValueHolder,
+        switchValue: state.switchButton.switchValue,
+        payer: state.switchButton.payer
     };
   };
   // End of Redux part
@@ -21,10 +22,10 @@ class SwitchB extends React.Component {
  render() {
     return (
      <View>
-       <Text style={{fontSize: 18}}> Switch </Text>
+       <Text> {this.props.payer} </Text>
         <Switch
           onValueChange={this.props.switchButton}
-          value={this.props.SwitchOnValueHolder} />
+          value={this.props.switchValue} />
      </View>
    );
  }

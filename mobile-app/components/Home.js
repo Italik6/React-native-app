@@ -15,7 +15,8 @@ const mapStateToProps = state => {
   return {
       open: state.closeExpenseDialog.open,
       expenses: state.closeExpenseDialog.expenses,
-      prices: state.closeExpenseDialog.prices
+      prices: state.closeExpenseDialog.prices,
+      payer: state.switchButton.payer
   };
 };
 
