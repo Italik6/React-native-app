@@ -20,13 +20,13 @@ class ActionButton extends React.Component {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-      backgroundColor: 'orange',
+      backgroundColor: '#FF9800',
       borderRadius: 10,
       padding: 10,
       width: "50%",
       marginTop: '10%',
       marginBottom: '10%',
-      shadowColor: '#000000',
+      shadowColor: '#FF9800',
       alignSelf:'center',
       shadowOffset: {
         width: 0,
