@@ -11,7 +11,7 @@ class ActionButton extends React.Component {
             onPress={this.props.onPress}
             title={this.props.title}
             color="#fff"
-            accessibilityLabel="ADD EXPENSE"
+            accessibilityLabel="Tap on the button"
         />
     </View>
    );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       padding: 10,
       width: "50%",
-      marginTop: '10%',
+      margin: '10%',
       marginBottom: '10%',
       shadowColor: '#FF9800',
       alignSelf:'center',

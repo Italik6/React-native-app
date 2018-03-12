@@ -34,18 +34,21 @@ class Form extends React.Component {
 
     return (
       <View style={s.container}>
-        <Text style={s.primaryText}>Expense form</Text>
-        <Text>Who did pay?</Text>
+       <Text style={s.titleText}>EXPENSE FORM</Text>
+       <View style={s.wrap}>
+        <Text style={s.secondaryText}>Who did pay?</Text>
         <SwitchButton />
+        <Text style={s.secondaryText}>Name of expense:</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={s.inputText}
           onChangeText={this.props.changeExpenseInput}
           value={this.props.text}
           autoFocus={true}
           maxLength={50}
         />
+        <Text style={s.secondaryText}>Cost of expense:</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={s.inputText}
           onChangeText={this.props.changePriceInput}
           value={this.props.price}
           maxLength={5}
@@ -55,6 +58,7 @@ class Form extends React.Component {
           onPress={this.props.closeExpenseDialog}
           title={title}
         />
+       </View>
       </View>
     ); 
   }

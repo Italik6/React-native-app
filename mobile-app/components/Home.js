@@ -54,27 +54,29 @@ class Home extends React.Component {
           />
           {/* Paymaster 1 */}
           <Text style={s.primaryText}>{paymaster}:</Text>
+          <View style={{flex: 1, flexDirection: 'row'}}>
           <FlatList
             data={this.props.expenses}
             keyExtractor={(item, index) => index}
-            renderItem={({item}) => <Text>{item}</Text>}
+            renderItem={({item}) => <Text style={s.listText}>{item}</Text>}
           />
           <FlatList
             data={this.props.prices}
             keyExtractor={(item, index) => index}
-            renderItem={({item}) => <Text>{item}</Text>}
+            renderItem={({item}) => <Text style={s.listText}>{item}</Text>}
           />
+          </View>
           {/* Paymaster 2 */}
           <Text style={s.primaryText}>{paymaster2}:</Text>
           <FlatList
             data={this.props.expenses2}
             keyExtractor={(item, index) => index}
-            renderItem={({item}) => <Text>{item}</Text>}
+            renderItem={({item}) => <Text style={s.listText}>{item}</Text>}
           />
           <FlatList
             data={this.props.prices2}
             keyExtractor={(item, index) => index}
-            renderItem={({item}) => <Text>{item}</Text>}
+            renderItem={({item}) => <Text style={s.listText}>{item}</Text>}
           />
           {/* Result */}
           <Text style={s.primaryText}>Summary: {summaryExpenses}</Text>
@@ -84,11 +86,7 @@ class Home extends React.Component {
             visible={this.props.open}
             animationType={'slide'}
             onRequestClose={this.props.closeExpenseDialog} >
-            <View>
-              <View>
                 <AddForm />
-              </View>
-            </View>
           </Modal>
       </View>
     );

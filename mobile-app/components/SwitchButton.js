@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, Switch} from 'react-native';
 import { connect } from "react-redux";
+let s = require('../components/styles');
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -22,10 +23,12 @@ class SwitchB extends React.Component {
  render() {
     return (
      <View>
-       <Text> {this.props.payer} </Text>
+       <Text style={s.secondaryText}> {this.props.payer} </Text>
         <Switch
           onValueChange={this.props.switchButton}
-          value={this.props.switchValue} />
+          value={this.props.switchValue}
+          style={{ marginBottom: 10 }}
+        />
      </View>
    );
  }
