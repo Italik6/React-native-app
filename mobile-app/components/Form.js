@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
-import { FormLabel, FormInput, Button } from 'react-native-elements';
 import SwitchButton from "../components/SwitchButton";
 import ActionButton from "../components/Button";
 
@@ -31,28 +30,29 @@ class Form extends React.Component {
 
   render() {
     let title = "SAVE EXPENSE"
+
     return (
       <View>
-         <FormLabel>Expense form</FormLabel>
-         <Text>Who did pay?</Text>
-         <SwitchButton />
-         <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-            onChangeText={this.props.changeExpenseInput}
-            value={this.props.text}
-            autoFocus={true}
-            maxLength={50}
-         />
-         <TextInput
-            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-            onChangeText={this.props.changePriceInput}
-            value={this.props.price}
-            maxLength={5}
-            keyboardType='numeric'
-         />  
+        <Text>Expense form</Text>
+        <Text>Who did pay?</Text>
+        <SwitchButton />
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={this.props.changeExpenseInput}
+          value={this.props.text}
+          autoFocus={true}
+          maxLength={50}
+        />
+        <TextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          onChangeText={this.props.changePriceInput}
+          value={this.props.price}
+          maxLength={5}
+          keyboardType='numeric'
+        />  
         <ActionButton
-        onPress={this.props.closeExpenseDialog}
-        title={title}
+          onPress={this.props.closeExpenseDialog}
+          title={title}
         />
       </View>
     ); 

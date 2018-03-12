@@ -46,7 +46,7 @@ class Home extends React.Component {
     let balancePayer2 = (summaryExpenses/2) - addPrices2;
 
     return (
-      <View>
+      <View style={styles.container}>
           <ActionButton 
             onPress={this.props.openExpenseDialog}
             title={title}
@@ -99,35 +99,7 @@ export default HomeMain;
 
 const styles = StyleSheet.create({
   container: {
-    // justifyContent: 'center',
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    // flex: 1,
-  },
-  modalContainer: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // backgroundColor: 'grey',
-  },
-  innerContainer: {
-    // alignItems: 'center',
-  },
-  flatList: {
-
-  },
-  flatList2: {
-    // alignSelf: 'flex-start',  
-  },
-  buttonContainer: {
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25
+    backgroundColor: '#212121',
+    height: '100%'
   }
 });
