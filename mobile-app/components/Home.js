@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Modal, Text, FlatList } from 'react-native';
+import { View, Modal, Text, FlatList } from 'react-native';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
 import ActionButton from "../components/Button";
+let s = require('../components/styles');
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -46,13 +47,13 @@ class Home extends React.Component {
     let balancePayer2 = (summaryExpenses/2) - addPrices2;
 
     return (
-      <View style={styles.container}>
+      <View style={s.container}>
           <ActionButton 
             onPress={this.props.openExpenseDialog}
             title={title}
           />
           {/* Paymaster 1 */}
-          <Text>{paymaster}:</Text>
+          <Text style={s.primaryText}>{paymaster}:</Text>
           <FlatList
             data={this.props.expenses}
             keyExtractor={(item, index) => index}
@@ -64,7 +65,7 @@ class Home extends React.Component {
             renderItem={({item}) => <Text>{item}</Text>}
           />
           {/* Paymaster 2 */}
-          <Text>{paymaster2}:</Text>
+          <Text style={s.primaryText}>{paymaster2}:</Text>
           <FlatList
             data={this.props.expenses2}
             keyExtractor={(item, index) => index}
@@ -76,15 +77,15 @@ class Home extends React.Component {
             renderItem={({item}) => <Text>{item}</Text>}
           />
           {/* Result */}
-          <Text>Summary: {summaryExpenses}</Text>
-          <Text>Balance of {paymaster}: {balancePayer}</Text>
-          <Text>Balance of {paymaster2}: {balancePayer2}</Text>
+          <Text style={s.primaryText}>Summary: {summaryExpenses}</Text>
+          <Text style={s.primaryText}>Balance of {paymaster}: {balancePayer}</Text>
+          <Text style={s.primaryText}>Balance of {paymaster2}: {balancePayer2}</Text>
           <Modal
             visible={this.props.open}
             animationType={'slide'}
             onRequestClose={this.props.closeExpenseDialog} >
-            <View style={styles.modalContainer}>
-              <View style={styles.innerContainer}>
+            <View>
+              <View>
                 <AddForm />
               </View>
             </View>
@@ -96,10 +97,3 @@ class Home extends React.Component {
 
 const HomeMain = connect(mapStateToProps, mapDispatchToProps)(Home);
 export default HomeMain;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#212121',
-    height: '100%'
-  }
-});

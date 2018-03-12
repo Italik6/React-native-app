@@ -3,6 +3,7 @@ import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
 import SwitchButton from "../components/SwitchButton";
 import ActionButton from "../components/Button";
+let s = require('../components/styles');
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -32,8 +33,8 @@ class Form extends React.Component {
     let title = "SAVE EXPENSE"
 
     return (
-      <View>
-        <Text>Expense form</Text>
+      <View style={s.container}>
+        <Text style={s.primaryText}>Expense form</Text>
         <Text>Who did pay?</Text>
         <SwitchButton />
         <TextInput
