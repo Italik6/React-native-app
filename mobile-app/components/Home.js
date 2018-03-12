@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Modal, Text, FlatList } from 'react-native';
-import { Button } from 'react-native-elements';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
+import ActionButton from "../components/Button";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -18,13 +18,14 @@ const mapStateToProps = state => {
       prices: state.closeExpenseDialog.prices,
       expenses2: state.closeExpenseDialog.expenses2,
       prices2: state.closeExpenseDialog.prices2,
-      payer: state.switchButton.payer 
+      payer: state.switchButton.payer
   };
 };
 
 // End of Redux part
 class Home extends React.Component {
   render() {
+    let title = "ADD EXPENSE"
     let paymaster = "Michal";
     let paymaster2 = "Wiktor";
     // Addition of prices
@@ -46,12 +47,10 @@ class Home extends React.Component {
 
     return (
       <View>
-          <Button
-          onPress={this.props.openExpenseDialog}
-          large
-          icon={{name: 'cart-plus', type: 'font-awesome'}}
-          title='ADD EXPENSE'
-          backgroundColor="#FF5722" />
+          <ActionButton 
+            onPress={this.props.openExpenseDialog}
+            title={title}
+          />
           {/* Paymaster 1 */}
           <Text>{paymaster}:</Text>
           <FlatList
@@ -118,5 +117,17 @@ const styles = StyleSheet.create({
   },
   flatList2: {
     // alignSelf: 'flex-start',  
+  },
+  buttonContainer: {
+    backgroundColor: '#2E9298',
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25
   }
 });

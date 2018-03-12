@@ -3,6 +3,7 @@ import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import SwitchButton from "../components/SwitchButton";
+import ActionButton from "../components/Button";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -29,7 +30,7 @@ class Form extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    let title = "SAVE EXPENSE"
     return (
       <View>
          <FormLabel>Expense form</FormLabel>
@@ -49,10 +50,10 @@ class Form extends React.Component {
             maxLength={5}
             keyboardType='numeric'
          />  
-        <Button
-            onPress={this.props.closeExpenseDialog}
-            title="Save the expense" >
-        </Button>
+        <ActionButton
+        onPress={this.props.closeExpenseDialog}
+        title={title}
+        />
       </View>
     ); 
   }
