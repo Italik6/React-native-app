@@ -3,7 +3,7 @@ import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
 import SwitchButton from "../components/SwitchButton";
 import ActionButton from "../components/Button";
-let s = require('../components/styles');
+import s from "../components/styles";
 
 // Redux part
 const mapDispatchToProps = dispatch => {

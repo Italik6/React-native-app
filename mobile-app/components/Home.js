@@ -3,7 +3,7 @@ import { View, Modal, Text, FlatList } from 'react-native';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
 import ActionButton from "../components/Button";
-let s = require('../components/styles');
+import s from "../components/styles";
 
 // Redux part
 const mapDispatchToProps = dispatch => {

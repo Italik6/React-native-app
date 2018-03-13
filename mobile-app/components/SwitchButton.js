@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Switch} from 'react-native';
 import { connect } from "react-redux";
-let s = require('../components/styles');
+import s from "../components/styles";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
