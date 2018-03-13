@@ -68,6 +68,7 @@ class Home extends React.Component {
           </View>
           {/* Paymaster 2 */}
           <Text style={s.primaryText}>{paymaster2}:</Text>
+          <View style={{flex: 1, flexDirection: 'row'}}>
           <FlatList
             data={this.props.expenses2}
             keyExtractor={(item, index) => index}
@@ -78,6 +79,7 @@ class Home extends React.Component {
             keyExtractor={(item, index) => index}
             renderItem={({item}) => <Text style={s.listText}>{item}</Text>}
           />
+          </View>
           {/* Result */}
           <Text style={s.primaryText}>Summary: {summaryExpenses}</Text>
           <Text style={s.primaryText}>Balance of {paymaster}: {balancePayer}</Text>
@@ -86,7 +88,7 @@ class Home extends React.Component {
             visible={this.props.open}
             animationType={'slide'}
             onRequestClose={this.props.closeExpenseDialog} >
-                <AddForm />
+              <AddForm />
           </Modal>
       </View>
     );
