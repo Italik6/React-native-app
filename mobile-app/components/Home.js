@@ -14,11 +14,11 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-      open: state.closeExpenseDialog.open,
-      expenses: state.closeExpenseDialog.expenses,
-      prices: state.closeExpenseDialog.prices,
-      expenses2: state.closeExpenseDialog.expenses2,
-      prices2: state.closeExpenseDialog.prices2,
+      open: state.submitExpenseDialog.open,
+      expenses: state.submitExpenseDialog.expenses,
+      prices: state.submitExpenseDialog.prices,
+      expenses2: state.submitExpenseDialog.expenses2,
+      prices2: state.submitExpenseDialog.prices2,
       payer: state.switchButton.payer
   };
 };
@@ -87,7 +87,7 @@ class Home extends React.Component {
           <Modal
             visible={this.props.open}
             animationType={'slide'}
-            onRequestClose={this.props.closeExpenseDialog} >
+            onRequestClose={this.props.submitExpenseDialog} >
               <AddForm />
           </Modal>
       </View>

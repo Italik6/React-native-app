@@ -1,12 +1,12 @@
 const initialState = {
-    text: '',
     expenses: [],
     prices: [],
     expenses2: [],
     prices2: [],
     open: false,
     switchValue: false,
-    payer: "Michal"
+    payer: "Michal",
+    value: {}
    };
    
    const mainReducer = (state = initialState, action) => {
@@ -20,22 +20,20 @@ const initialState = {
             return { ...state, switchValue: true, payer: "Wiktor" };
           }
        case 'CHANGE_EXPENSE_INPUT':
-         return {...state, text: action.text };
-       case 'CHANGE_PRICE_INPUT':
-         return {...state, price: action.price };
-       case 'CLOSE_EXPENSE_DIALOG':
+            return {...state, value: action.value };
+       case 'SUBMIT_EXPENSE_DIALOG':
           if (state.payer === "Michal"){
             return {
-                  ...state, open: false, text: '', price: '',
-                  expenses: [...state.expenses, state.text],
-                  prices: [...state.prices, state.price]
+                  ...state, open: false, value: {},
+                  expenses: [...state.expenses, state.value.expense],
+                  prices: [...state.prices, state.value.cost]
             };
           }
           else {
             return {
-                  ...state, open: false, text: '', price: '',
-                  expenses2: [...state.expenses2, state.text],
-                  prices2: [...state.prices2, state.price]
+                  ...state, open: false, value: {},
+                  expenses2: [...state.expenses2, state.value.expense],
+                  prices2: [...state.prices2, state.value.cost]
             };
           };
        case 'OPEN_EXPENSE_DIALOG':

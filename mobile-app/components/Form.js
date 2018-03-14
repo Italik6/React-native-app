@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 import SwitchButton from "../components/SwitchButton";
 import ActionButton from "../components/Button";
 import s from "../components/styles";
+import t from 'tcomb-form-native';
 
 // Redux part
 const mapDispatchToProps = dispatch => {
   return {
-      changeExpenseInput: (text) => dispatch({type: 'CHANGE_EXPENSE_INPUT', text}),
-      changePriceInput: (price) => dispatch({type: 'CHANGE_PRICE_INPUT', price}),
-      closeExpenseDialog: () => dispatch({type: 'CLOSE_EXPENSE_DIALOG'}),
+      changeExpenseInput: (value) => dispatch({type: 'CHANGE_EXPENSE_INPUT', value}),
+      submitExpenseDialog: (value) => dispatch({type: 'SUBMIT_EXPENSE_DIALOG', value}),
   };
 };
 
@@ -18,15 +18,51 @@ const mapStateToProps = state => {
   return {
       text: state.changeExpenseInput.text,
       price: state.changePriceInput.price,
+      value: state.changeExpenseInput.value,
+      _form: state.submitExpenseDialog._form,
   };
 };
 // End of Redux part
+// Validation
+const Form = t.form.Form;
 
-class Form extends React.Component {
-  changeValue = (value) => {
-    this.setState({
-      value:value
-    })
+const Expense = t.struct({
+  expense: t.String,
+  cost: t.Number
+});
+
+const formStyles = {
+  ...Form.stylesheet,
+  controlLabel: {
+    normal: {
+      color: 'blue',
+      fontSize: 18,
+      marginBottom: 7,
+      fontWeight: '600'
+    },
+  }
+}
+
+const options = {
+  fields: {
+    expense: {
+      error: 'This field is required'
+    },
+    cost: {
+      error: 'This field is required'
+    }
+  },
+  stylesheet: formStyles,
+};
+
+
+class FormE extends React.Component {
+
+  handleClick = () => {
+    const value = this._form.getValue();
+    if (value) {
+      this.props.submitExpenseDialog();
+    } 
   }
 
   render() {
@@ -38,31 +74,23 @@ class Form extends React.Component {
        <View style={s.wrap}>
         <Text style={s.secondaryText}>Who did pay?</Text>
         <SwitchButton />
-        <Text style={s.secondaryText}>Name of expense:</Text>
-        <TextInput
-          style={s.inputText}
-          onChangeText={this.props.changeExpenseInput}
-          value={this.props.text}
-          autoFocus={true}
-          maxLength={50}
+
+       </View>
+        <Form 
+          type={Expense}
+          ref={c => this._form = c}
+          options={options} 
+          value={this.props.value}
+          onChange={this.props.changeExpenseInput}
         />
-        <Text style={s.secondaryText}>Cost of expense:</Text>
-        <TextInput
-          style={s.inputText}
-          onChangeText={this.props.changePriceInput}
-          value={this.props.price}
-          maxLength={5}
-          keyboardType='numeric'
-        />  
         <ActionButton
-          onPress={this.props.closeExpenseDialog}
+          onPress={this.handleClick}
           title={title}
         />
-       </View>
       </View>
     ); 
   }
 }
 
-const AddForm = connect(mapStateToProps, mapDispatchToProps)(Form);
+const AddForm = connect(mapStateToProps, mapDispatchToProps)(FormE);
 export default AddForm;
