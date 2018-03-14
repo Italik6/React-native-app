@@ -7,7 +7,7 @@
   } = React;
   
   let INIT_COLOR = "#fff";
-  let ERROR_COLOR = "red";
+  let ERROR_COLOR = "#E53935";
   let BACKGROUND_COLOR = "#212121";
   let ORANGE_COLOR = "#FF9800";
   let INIT_FONT_SIZE = 16; 
@@ -50,5 +50,13 @@
     },
     wrap: {
         margin: INIT_MARGIN,
+    },
+    errorText: {
+        color: ERROR_COLOR,
+        fontSize: SMALL_FONT_SIZE
+    },
+    cancelLink: {
+        color: ORANGE_COLOR,
+        alignSelf:'center'
     }
 }); 

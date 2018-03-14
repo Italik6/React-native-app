@@ -38,6 +38,8 @@ const initialState = {
           };
        case 'OPEN_EXPENSE_DIALOG':
             return {...state, open: true};
+       case 'CANCEL_EXPENSE_DIALOG':
+            return {...state, open: false};
        default:
             return state;
      }

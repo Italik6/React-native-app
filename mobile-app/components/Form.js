@@ -11,6 +11,7 @@ const mapDispatchToProps = dispatch => {
   return {
       changeExpenseInputs: (value) => dispatch({type: 'CHANGE_EXPENSE_INPUTS', value}),
       submitExpenseDialog: (value) => dispatch({type: 'SUBMIT_EXPENSE_DIALOG', value}),
+      cancelExpenseDialog: () => dispatch({type: 'CANCEL_EXPENSE_DIALOG'})
   };
 };
 
@@ -29,7 +30,7 @@ const Expense = t.struct({
 });
 
 let INIT_COLOR = "#fff";
-let ERROR_COLOR = "red";
+let ERROR_COLOR = "#E53935";
 let ORANGE_COLOR = "#FF9800";
 let INIT_FONT_SIZE = 16; 
 let SMALL_FONT_SIZE = 14; 
@@ -75,24 +76,24 @@ const formStyles = {
       borderColor: ERROR_COLOR,
       borderWidth: 1,
       marginBottom: SMALL_MARGIN,
-      width: '95%',
+      width: '100%',
       alignSelf:'center',
-    },
+    }
   }
 }
 
 const options = {
   fields: {
     expense: {
-      error: 'This field is required'
+      error: <Text style={s.errorText}>This field is required</Text>,
+      autoFocus: true
     },
     cost: {
-      error: 'This field is required and it can only contain numbers'
+      error: <Text style={s.errorText}>This field is required and it can only contain numbers</Text>
     }
   },
-  stylesheet: formStyles,
+  stylesheet: formStyles
 };
-
 
 class FormE extends React.Component {
 
@@ -121,6 +122,7 @@ class FormE extends React.Component {
         onPress={this.handleClick}
         title={title}
        />
+       <Text onPress={this.props.cancelExpenseDialog} style={s.cancelLink}>CANCEL</Text>
       </View>
     ); 
   }
