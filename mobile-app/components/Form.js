@@ -9,21 +9,18 @@ import t from 'tcomb-form-native';
 // Redux part
 const mapDispatchToProps = dispatch => {
   return {
-      changeExpenseInput: (value) => dispatch({type: 'CHANGE_EXPENSE_INPUT', value}),
+      changeExpenseInputs: (value) => dispatch({type: 'CHANGE_EXPENSE_INPUTS', value}),
       submitExpenseDialog: (value) => dispatch({type: 'SUBMIT_EXPENSE_DIALOG', value}),
   };
 };
 
 const mapStateToProps = state => {
   return {
-      text: state.changeExpenseInput.text,
-      price: state.changePriceInput.price,
-      value: state.changeExpenseInput.value,
-      _form: state.submitExpenseDialog._form,
+      value: state.changeExpenseInputs.value,
   };
 };
 // End of Redux part
-// Validation
+// Validation section
 const Form = t.form.Form;
 
 const Expense = t.struct({
@@ -31,14 +28,55 @@ const Expense = t.struct({
   cost: t.Number
 });
 
+let INIT_COLOR = "#fff";
+let ERROR_COLOR = "red";
+let ORANGE_COLOR = "#FF9800";
+let INIT_FONT_SIZE = 16; 
+let SMALL_FONT_SIZE = 14; 
+let INIT_MARGIN = 10;
+let SMALL_MARGIN = 5;
+let title = "SAVE EXPENSE";
+
 const formStyles = {
   ...Form.stylesheet,
   controlLabel: {
     normal: {
-      color: 'blue',
-      fontSize: 18,
-      marginBottom: 7,
-      fontWeight: '600'
+      color: INIT_COLOR,
+      fontSize: INIT_FONT_SIZE,
+      marginBottom: INIT_MARGIN,
+      marginLeft: INIT_MARGIN,
+    },
+    error: {
+      color: ERROR_COLOR,
+      fontSize: INIT_FONT_SIZE,
+      marginBottom: INIT_MARGIN,
+      marginLeft: INIT_MARGIN,
+    }
+  },
+  textbox: {
+    normal: {
+      color: INIT_COLOR,
+      fontSize: SMALL_FONT_SIZE,
+      height: 36,
+      paddingHorizontal: 7,
+      borderRadius: 4,
+      borderColor: INIT_COLOR,
+      borderWidth: 1,
+      marginBottom: 5,
+      width: '95%',
+      alignSelf:'center',
+    },
+    error: {
+      color: INIT_COLOR,
+      fontSize: SMALL_FONT_SIZE,
+      height: 36,
+      paddingHorizontal: 7,
+      borderRadius: 4,
+      borderColor: ERROR_COLOR,
+      borderWidth: 1,
+      marginBottom: SMALL_MARGIN,
+      width: '95%',
+      alignSelf:'center',
     },
   }
 }
@@ -49,7 +87,7 @@ const options = {
       error: 'This field is required'
     },
     cost: {
-      error: 'This field is required'
+      error: 'This field is required and it can only contain numbers'
     }
   },
   stylesheet: formStyles,
@@ -64,29 +102,25 @@ class FormE extends React.Component {
       this.props.submitExpenseDialog();
     } 
   }
-
+// End of validation section
   render() {
-    let title = "SAVE EXPENSE"
-
     return (
       <View style={s.container}>
        <Text style={s.titleText}>EXPENSE FORM</Text>
        <View style={s.wrap}>
-        <Text style={s.secondaryText}>Who did pay?</Text>
         <SwitchButton />
-
        </View>
-        <Form 
-          type={Expense}
-          ref={c => this._form = c}
-          options={options} 
-          value={this.props.value}
-          onChange={this.props.changeExpenseInput}
-        />
-        <ActionButton
-          onPress={this.handleClick}
-          title={title}
-        />
+       <Form 
+        type={Expense}
+        ref={c => this._form = c}
+        options={options} 
+        value={this.props.value}
+        onChange={this.props.changeExpenseInputs}
+       />
+       <ActionButton
+        onPress={this.handleClick}
+        title={title}
+       />
       </View>
     ); 
   }

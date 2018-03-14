@@ -6,43 +6,49 @@
     StyleSheet,
   } = React;
   
+  let INIT_COLOR = "#fff";
+  let ERROR_COLOR = "red";
+  let BACKGROUND_COLOR = "#212121";
+  let ORANGE_COLOR = "#FF9800";
+  let INIT_FONT_SIZE = 16; 
+  let SMALL_FONT_SIZE = 14; 
+  let BIG_FONT_SIZE = 20;
+  let INIT_MARGIN = 10;
+  let SMALL_MARGIN = 5;
+  let title = "SAVE EXPENSE";
+
   module.exports = StyleSheet.create({
     container: {
-        backgroundColor: '#212121',
+        backgroundColor: BACKGROUND_COLOR,
         height: '100%'
     },
     titleText: {
         alignSelf:'center',
-        color: '#fff',
+        color: INIT_COLOR,
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginTop: INIT_MARGIN
     },
     primaryText: {
-        color: '#fff',
-        fontSize: 20,
+        color: INIT_COLOR,
+        fontSize: BIG_FONT_SIZE,
         fontWeight: 'bold',
-        margin: 10
+        margin: INIT_MARGIN
     },
     secondaryText: {
-        color: '#fff',
-        fontSize: 16,
-        marginTop: 10,
-        marginBottom: 10
-    },
-    inputText: {
-        height: 40,
-        borderColor: '#FFE0B2',
-        borderWidth: 1,
-        color: '#fff'
+        color: INIT_COLOR,
+        fontSize: INIT_FONT_SIZE,
+        marginTop: INIT_MARGIN,
+        marginBottom: INIT_MARGIN
     },
     listText: {
-        color: '#fff',
-        fontSize: 16,
-        marginTop: 5,
-        marginBottom: 5,
-        marginLeft: 10
+        color: INIT_COLOR,
+        fontSize: INIT_FONT_SIZE,
+        marginTop: SMALL_MARGIN,
+        marginBottom: SMALL_MARGIN,
+        marginLeft: INIT_MARGIN
     },
     wrap: {
-        margin: 20,
+        margin: INIT_MARGIN,
     }
 }); 

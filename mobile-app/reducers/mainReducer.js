@@ -19,7 +19,7 @@ const initialState = {
           else {
             return { ...state, switchValue: true, payer: "Wiktor" };
           }
-       case 'CHANGE_EXPENSE_INPUT':
+       case 'CHANGE_EXPENSE_INPUTS':
             return {...state, value: action.value };
        case 'SUBMIT_EXPENSE_DIALOG':
           if (state.payer === "Michal"){
@@ -37,9 +37,9 @@ const initialState = {
             };
           };
        case 'OPEN_EXPENSE_DIALOG':
-         return {...state, open: true};
+            return {...state, open: true};
        default:
-         return state;
+            return state;
      }
    };
    

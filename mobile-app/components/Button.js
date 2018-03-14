@@ -7,11 +7,11 @@ class ActionButton extends React.Component {
     return (
     <View style={styles.buttonContainer}>
         <Button
-            style={styles.addButton}
-            onPress={this.props.onPress}
-            title={this.props.title}
-            color="#fff"
-            accessibilityLabel="Tap on the button"
+          style={styles.addButton}
+          onPress={this.props.onPress}
+          title={this.props.title}
+          color="#fff"
+          accessibilityLabel="Tap on the button"
         />
     </View>
    );
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
       padding: 10,
       width: "50%",
       margin: '10%',
-      marginBottom: '10%',
       shadowColor: '#FF9800',
       alignSelf:'center',
       shadowOffset: {
