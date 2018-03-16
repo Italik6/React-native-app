@@ -3,8 +3,9 @@ import { View, TextInput, Text } from 'react-native';
 import { connect } from "react-redux";
 import SwitchButton from "../components/SwitchButton";
 import ActionButton from "../components/Button";
-import s from "../components/styles";
+import s from "../styles/styles";
 import t from 'tcomb-form-native';
+import { colors, fonts, spacers } from '../styles/variables';
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -29,53 +30,44 @@ const Expense = t.struct({
   cost: t.Number
 });
 
-let INIT_COLOR = "#fff";
-let ERROR_COLOR = "#E53935";
-let ORANGE_COLOR = "#FF9800";
-let INIT_FONT_SIZE = 16; 
-let SMALL_FONT_SIZE = 14; 
-let INIT_MARGIN = 10;
-let SMALL_MARGIN = 5;
-let title = "SAVE EXPENSE";
-
 const formStyles = {
   ...Form.stylesheet,
   controlLabel: {
     normal: {
-      color: INIT_COLOR,
-      fontSize: INIT_FONT_SIZE,
-      marginBottom: INIT_MARGIN,
-      marginLeft: INIT_MARGIN,
+      color: colors.INIT_COLOR,
+      fontSize: fonts.INIT_FONT_SIZE,
+      marginBottom: spacers.INIT_MARGIN,
+      marginLeft: spacers.INIT_MARGIN,
     },
     error: {
-      color: ERROR_COLOR,
-      fontSize: INIT_FONT_SIZE,
-      marginBottom: INIT_MARGIN,
-      marginLeft: INIT_MARGIN,
+      color: colors.ERROR_COLOR,
+      fontSize: fonts.INIT_FONT_SIZE,
+      marginBottom: spacers.INIT_MARGIN,
+      marginLeft: spacers.INIT_MARGIN,
     }
   },
   textbox: {
     normal: {
-      color: INIT_COLOR,
-      fontSize: SMALL_FONT_SIZE,
+      color: colors.INIT_COLOR,
+      fontSize: fonts.SMALL_FONT_SIZE,
       height: 36,
       paddingHorizontal: 7,
       borderRadius: 4,
-      borderColor: INIT_COLOR,
+      borderColor: colors.INIT_COLOR,
       borderWidth: 1,
       marginBottom: 5,
       width: '95%',
       alignSelf:'center',
     },
     error: {
-      color: INIT_COLOR,
-      fontSize: SMALL_FONT_SIZE,
+      color: colors.INIT_COLOR,
+      fontSize: fonts.SMALL_FONT_SIZE,
       height: 36,
       paddingHorizontal: 7,
       borderRadius: 4,
-      borderColor: ERROR_COLOR,
+      borderColor: colors.ERROR_COLOR,
       borderWidth: 1,
-      marginBottom: SMALL_MARGIN,
+      marginBottom: spacers.SMALL_MARGIN,
       width: '100%',
       alignSelf:'center',
     }
@@ -96,7 +88,6 @@ const options = {
 };
 
 class FormE extends React.Component {
-
   handleClick = () => {
     const value = this._form.getValue();
     if (value) {
@@ -105,6 +96,7 @@ class FormE extends React.Component {
   }
 // End of validation section
   render() {
+    let title = "SAVE EXPENSE";
     return (
       <View style={s.container}>
        <Text style={s.titleText}>EXPENSE FORM</Text>

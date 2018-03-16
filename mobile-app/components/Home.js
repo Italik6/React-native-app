@@ -3,7 +3,7 @@ import { View, Modal, Text, FlatList } from 'react-native';
 import { connect } from "react-redux";
 import AddForm from "../components/Form";
 import ActionButton from "../components/Button";
-import s from "../components/styles";
+import s from "../styles/styles";
 
 // Redux part
 const mapDispatchToProps = dispatch => {
@@ -88,7 +88,7 @@ class Home extends React.Component {
             visible={this.props.open}
             animationType={'slide'}
             onRequestClose={this.props.submitExpenseDialog} >
-              <AddForm />
+             <AddForm />
           </Modal>
       </View>
     );
